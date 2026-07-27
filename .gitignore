@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+*.pyo
+.vscode/
+venv/
+env/
+.env
+staticfiles/
+db.sqlite3
+
+# Old test/demo uploads from local development - not needed in the repo.
+# (media/profilepic.jpg, the default placeholder, is still kept/tracked)
+media/Post_image/*
+media/profile_images/*
+!media/Post_image/.gitkeep
+!media/profile_images/.gitkeep
