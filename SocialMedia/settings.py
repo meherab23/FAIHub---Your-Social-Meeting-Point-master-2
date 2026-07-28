@@ -139,6 +139,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 if CLOUDINARY_URL:
     STORAGES["default"] = {"BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage"}
+    # Django 4.0.5 predates the STORAGES dict (added in Django 4.2) - it only
+    # reads the older DEFAULT_FILE_STORAGE setting for uploaded files, so we
+    # need this too or Cloudinary silently gets ignored for media uploads.
+    DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
 
 # ---------------------------------------------------------------------------
