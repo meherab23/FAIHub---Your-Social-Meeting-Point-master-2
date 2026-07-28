@@ -1,7 +1,9 @@
-/* Global mobile-responsive fixes.
-   These only kick in on small screens (max-width: 768px) so desktop/laptop
-   layout is untouched. Loaded on every page after the page's own CSS,
-   so these rules override the fixed-width/desktop-only values. */
+/* ==========================================================================
+   Global mobile-responsive redesign.
+   Only applies at max-width: 768px, so desktop/laptop is untouched.
+   Loaded LAST on every page, after the page's own CSS, so these rules
+   can safely override old desktop-only fixed widths/positions.
+   ========================================================================== */
 
 html, body {
     overflow-x: hidden;
@@ -10,22 +12,27 @@ html, body {
 
 img {
     max-width: 100%;
-    height: auto;
 }
 
 @media (max-width: 768px) {
+
+    body {
+        background-color: #f0f2f5;
+    }
+
+    /* ---------------- Top nav (shared across pages) ---------------- */
     nav {
         flex-wrap: wrap;
-        padding: 8px 4%;
+        padding: 10px 4%;
     }
 
     .logo {
-        width: 100px;
+        width: 90px;
         margin-right: 10px;
     }
 
     .nav1 ul li img {
-        margin: 0 12px !important;
+        margin: 0 14px !important;
         width: 24px;
     }
 
@@ -39,7 +46,6 @@ img {
         margin-left: auto;
     }
 
-    /* Common container/content wrappers used across pages */
     .container,
     .content,
     .home,
@@ -52,52 +58,272 @@ img {
         box-sizing: border-box;
     }
 
-    form,
-    .form,
-    .create-post,
-    .post {
-        width: 92% !important;
-        max-width: 92% !important;
-        margin: 8px auto !important;
-        box-sizing: border-box;
-    }
-
     table {
         display: block;
         overflow-x: auto;
         white-space: nowrap;
     }
 
-    /* Home page: "Create Post" box and suggestion cards use fixed
-       desktop widths/margins (e.g. margin-left: 35%, width: 380px)
-       which push them off-screen on mobile. Force them to fit. */
-    .container-2 {
-        width: 92% !important;
-        max-width: 92% !important;
-        margin-left: 4% !important;
-        margin-right: 4% !important;
-    }
+    /* ================= HOME FEED ================= */
 
-    .container-4 {
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box;
-    }
-
+    /* "Create Post" card */
     .post {
-        width: 100% !important;
-        box-sizing: border-box;
-    }
-
-    .follow {
-        position: relative !important;
         width: 100% !important;
         height: auto !important;
         box-sizing: border-box;
     }
+    .container-2 {
+        width: 92% !important;
+        max-width: 92% !important;
+        margin: 12px auto !important;
+        padding: 16px !important;
+        border-radius: 14px !important;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.12) !important;
+        box-sizing: border-box;
+    }
+    .container-2 h1 {
+        font-size: 1.15rem !important;
+        margin-bottom: 10px;
+    }
+    .container-2 .input2 {
+        width: 100% !important;
+        box-sizing: border-box;
+        padding: 10px 12px;
+        border-radius: 20px;
+        border: 1px solid #dcdfe3;
+        font-size: 0.95rem;
+    }
+    .container-2 .post2 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
 
+    /* "You might know them" — horizontal scrolling strip instead of
+       tall stacked cards, like Instagram's suggestions row. */
+    .follow {
+        position: relative !important;
+        width: 92% !important;
+        height: auto !important;
+        margin: 0 auto 12px auto !important;
+        box-sizing: border-box;
+    }
     .followperson {
         width: 100% !important;
-        overflow-x: hidden;
+        height: auto !important;
+        margin-top: 0 !important;
+        overflow: visible;
+    }
+    .followperson h2 {
+        font-size: 1rem !important;
+        margin: 6px 0 10px 2px;
+        color: #444;
+    }
+    .followperson {
+        display: block;
+    }
+    .followperson > h2 + div,
+    .container-4 {
+        display: inline-block;
+        vertical-align: top;
+    }
+    .followperson {
+        white-space: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 6px;
+    }
+    .followperson h2 {
+        white-space: normal;
+        display: block;
+    }
+    .container-4 {
+        width: 130px !important;
+        max-width: 130px !important;
+        height: auto !important;
+        margin: 0 8px 0 0 !important;
+        padding: 12px 8px !important;
+        border-radius: 12px !important;
+        background: #ffffff;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.10) !important;
+        text-align: center;
+        box-sizing: border-box;
+        position: relative !important;
+    }
+    .container-4 .top-frame {
+        height: auto !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .container-4 .usericon {
+        width: auto !important;
+        height: auto !important;
+        position: static !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .container-4 .bgimg {
+        width: 56px !important;
+        height: 56px !important;
+    }
+    .container-4 .frame-fullname {
+        position: static !important;
+        display: block;
+        font-size: 0.8rem !important;
+        font-weight: 600;
+        margin-top: 6px;
+        white-space: normal;
+        line-height: 1.2;
+    }
+    .container-4 .frame-usname {
+        position: static !important;
+        display: block;
+        font-size: 0.7rem !important;
+        color: #777;
+    }
+    .container-4 .frame-option2 {
+        position: static !important;
+        display: block;
+        margin-top: 6px;
+    }
+    .container-4 .btn-2 {
+        font-size: 0.75rem !important;
+        padding: 4px 10px !important;
+        border-radius: 14px !important;
+    }
+
+    /* Post feed */
+    .postshow {
+        position: static !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+    .container-3-home {
+        width: 92% !important;
+        max-width: 92% !important;
+        margin: 0 auto 14px auto !important;
+        border-radius: 14px !important;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.12) !important;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+    .container-3-home .top-frame {
+        height: auto !important;
+        display: flex;
+        align-items: center;
+        padding: 10px 12px;
+        position: relative;
+    }
+    .container-3-home .usericon {
+        width: auto !important;
+        height: auto !important;
+        position: static !important;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .container-3-home .bgimg {
+        width: 38px !important;
+        height: 38px !important;
+    }
+    .container-3-home .frame-name {
+        position: static !important;
+        font-size: 0.95rem !important;
+        font-weight: 600;
+    }
+    .container-3-home .frame-time {
+        position: static !important;
+        width: auto !important;
+        display: block;
+        font-size: 0.72rem !important;
+        color: #8a8d91;
+        margin-top: 1px;
+    }
+    .container-3-home .frame-option {
+        position: absolute !important;
+        right: 8px;
+        top: 8px;
+        left: auto !important;
+        bottom: auto !important;
+        font-size: 1.1rem !important;
+    }
+    .container-3-home .body-frame {
+        font-size: 0.95rem !important;
+        margin: 0 !important;
+        padding: 0 12px 10px 12px;
+        line-height: 1.35;
+    }
+    .container-3-home .body-image {
+        margin-top: 0 !important;
+    }
+    .container-3-home .bdimg {
+        width: 100% !important;
+        height: auto !important;
+        max-height: 420px;
+        object-fit: cover;
+        display: block;
+    }
+    .container-3-home .bottom-frame {
+        padding: 6px 12px 10px 12px;
+    }
+
+    /* ================= CHAT ================= */
+
+    main {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important;
+        width: 100% !important;
+        height: 100%;
+        border-radius: 0 !important;
+        display: flex;
+        flex-direction: column;
+    }
+    main header {
+        flex-shrink: 0;
+    }
+    main header div.title h1 {
+        font-size: 1.2rem !important;
+    }
+    main header button {
+        display: block !important;
+        padding: 6px;
+    }
+    main header button img {
+        width: 30px !important;
+        filter: brightness(0) invert(1);
+    }
+    main div.container {
+        flex: 1;
+        min-height: 0;
+        padding: 0 !important;
+        display: flex;
+        flex-direction: column;
+    }
+    main div.container div.users-window {
+        width: 100% !important;
+        margin-right: 0 !important;
+        border-radius: 0 !important;
+        max-height: 100%;
+        overflow-y: auto;
+    }
+    main div.container div.chat-window {
+        flex: 1;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        border-radius: 0 !important;
+    }
+    main div.container div.chat-window div.chats {
+        flex: 1;
+        min-height: 0;
+        max-height: none !important;
+    }
+    main div.container div.chat-window div.user-input {
+        flex-shrink: 0;
     }
 }
