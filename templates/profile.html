@@ -127,30 +127,6 @@
       <div class="break"></div>
       <!-- <h1>Hello</h1> -->
       <hr />
-      <div class="post">
-        <div class="container-2">
-          <h1>Create Your Post</h1>
-          <form action="upload" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <input
-              type="text"
-              name="caption"
-              class="input2"
-              placeholder="Whats on your mind?"
-            />
-            <br />
-            <div class="post2">
-              <div class="image-upload" >
-                <label for="file-input" >                 
-                  <img src="{% static 'image/gallery.svg' %}" class = "pointer" />
-                </label>
-                <input id="file-input" type="file" name="image" />
-              </div>
-              <button type="submit" class="btn-2">Post</button>
-            </div>
-          </form>
-        </div>
-        </div>
         {% comment %} posts div {% endcomment %}
         <div class="postshow">
         {% comment %} post start {% endcomment %}
