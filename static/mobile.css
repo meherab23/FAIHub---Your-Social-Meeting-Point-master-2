@@ -67,4 +67,37 @@ img {
         overflow-x: auto;
         white-space: nowrap;
     }
+
+    /* Home page: "Create Post" box and suggestion cards use fixed
+       desktop widths/margins (e.g. margin-left: 35%, width: 380px)
+       which push them off-screen on mobile. Force them to fit. */
+    .container-2 {
+        width: 92% !important;
+        max-width: 92% !important;
+        margin-left: 4% !important;
+        margin-right: 4% !important;
+    }
+
+    .container-4 {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    .post {
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    .follow {
+        position: relative !important;
+        width: 100% !important;
+        height: auto !important;
+        box-sizing: border-box;
+    }
+
+    .followperson {
+        width: 100% !important;
+        overflow-x: hidden;
+    }
 }
