@@ -44,6 +44,15 @@ INSTALLED_APPS = [
     'core',
 ]
 
+# Render's free tier has an ephemeral filesystem: uploaded photos disappear
+# on every redeploy/restart. If CLOUDINARY_URL is set (free Cloudinary
+# account), uploaded media is stored there permanently instead. Locally,
+# with no CLOUDINARY_URL set, uploads just go to the local media/ folder
+# as before - nothing changes for local development.
+CLOUDINARY_URL = os.environ.get("CLOUDINARY_URL")
+if CLOUDINARY_URL:
+    INSTALLED_APPS = ['cloudinary_storage'] + INSTALLED_APPS + ['cloudinary']
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -128,6 +137,9 @@ STORAGES = {
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+if CLOUDINARY_URL:
+    STORAGES["default"] = {"BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage"}
+
 
 # ---------------------------------------------------------------------------
 # EMAIL (used for signup verification / password reset)
@@ -136,9 +148,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-#SITE_URL="https://127.0.0.1:8000"
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'mchowdhury201212@bscse.uiu.ac.bd')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'zvbc xlix kanm vjwq')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

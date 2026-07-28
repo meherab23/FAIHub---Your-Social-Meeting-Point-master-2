@@ -105,38 +105,39 @@ img {
     .follow {
         position: relative !important;
         width: 92% !important;
+        max-width: 92% !important;
         height: auto !important;
         margin: 0 auto 12px auto !important;
+        overflow: hidden !important;
         box-sizing: border-box;
     }
     .followperson {
+        display: block !important;
         width: 100% !important;
+        max-width: 100% !important;
         height: auto !important;
         margin-top: 0 !important;
-        overflow: visible;
+        box-sizing: border-box;
     }
     .followperson h2 {
         font-size: 1rem !important;
         margin: 6px 0 10px 2px;
         color: #444;
-    }
-    .followperson {
-        display: block;
-    }
-    .followperson > h2 + div,
-    .container-4 {
-        display: inline-block;
-        vertical-align: top;
-    }
-    .followperson {
-        white-space: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 6px;
-    }
-    .followperson h2 {
         white-space: normal;
         display: block;
+    }
+    .suggestion-scroll-row {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding-bottom: 6px;
+    }
+    .container-4 {
+        flex: 0 0 auto;
     }
     .container-4 {
         width: 130px !important;
@@ -263,11 +264,25 @@ img {
         width: 100% !important;
         height: auto !important;
         max-height: 420px;
+        min-height: 0 !important;
         object-fit: cover;
         display: block;
     }
+    .container-3-home .body-image:has(img[src=""]),
+    .container-3-home .bdimg[src=""] {
+        display: none;
+    }
     .container-3-home .bottom-frame {
         padding: 6px 12px 10px 12px;
+    }
+
+    /* "..." post options menu (Download/Copy/Report) was opening
+       off the right edge of the screen. Keep it inside the viewport. */
+    .dropdown-menu {
+        right: 0 !important;
+        left: auto !important;
+        max-width: 70vw;
+        box-sizing: border-box;
     }
 
     /* ================= CHAT ================= */
