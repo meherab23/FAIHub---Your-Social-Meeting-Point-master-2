@@ -30,6 +30,7 @@
         });
       }
     </script>
+    <link rel="stylesheet" href="{% static 'mobile.css' %}" />
 </head>
 
 <body>
@@ -98,7 +99,7 @@
         let current=0
         let open=0
 
-        var uwindow=Document.querySelector('.users-window');
+        var uwindow=document.querySelector('.users-window');
         function show_hide(){
             if(uwindow.style.display=="block"){
                 uwindow.style.display="none";
