@@ -180,14 +180,14 @@
                
               <ul class="dropdown-menu">
                 {% if post.username == request.user.username %}
-                <li style="font-size: 1.5rem"><a href="{{post.post_image.url}}" download>Download Image</a></li>
+                {% if post.post_image %}<li style="font-size: 1.5rem"><a href="{{post.post_image.url}}" download>Download Image</a></li>{% endif %}
                  <li style="font-size: 1.5rem"><a href="#" onclick="copyText()">Edit Caption</a></li>
-                 <li style="font-size: 1.5rem"><a href="http://127.0.0.1:8000/post/{{post.id}}"  onclick="copyURI(event)">Copy Post Link</a></li>
+                 <li style="font-size: 1.5rem"><a href="https://{{request.get_host}}/post/{{post.id}}"  onclick="copyURI(event)">Copy Post Link</a></li>
                <li style="font-size: 1.5rem" ><a href="/deletepost?id={{post.id}}">delete</a></li>         
                {% else %}
-               <li style="font-size: 1.5rem"><a href="{{post.post_image.url}}"
-                download >Download Image</a></li>
-                <li style="font-size: 1.5rem"><a href="http://127.0.0.1:8000/post/{{post.id}}"  onclick="copyURI(event)">Copy Post Link</a></li>
+               {% if post.post_image %}<li style="font-size: 1.5rem"><a href="{{post.post_image.url}}"
+                download >Download Image</a></li>{% endif %}
+                <li style="font-size: 1.5rem"><a href="https://{{request.get_host}}/post/{{post.id}}"  onclick="copyURI(event)">Copy Post Link</a></li>
                <li style="font-size: 1.5rem" ><a href="#">Report</a></li>
                {% endif %}
                </ul>
@@ -210,10 +210,12 @@
              <div class="body-frame">
                       {{post.caption}}
              </div>
+             {% if post.post_image %}
              <div class="body-image">
                       <a href="{{post.post_image.url}}">
                       <img src="{{post.post_image.url}}" alt="" class="bdimg"/> </a>
              </div>
+             {% endif %}
              <div class="bottom-frame">
                       <button
                       id = "like"
@@ -348,7 +350,7 @@
                 <input type="button" class="btn-2" id="postcomment" value="Comment" onclick="event.preventDefault(); commentsub('{{post.id}}')">
                 {% comment %} <button type="submit" class="btn-2" id="postcomment">Comment</button> {% endcomment %}
               </form>
-              <div> <a href="post/{{post.id}}">Show All Comment</a></div>
+              <div> <a href="/post/{{post.id}}">Show All Comment</a></div>
           </div>
           {% endfor %}
          

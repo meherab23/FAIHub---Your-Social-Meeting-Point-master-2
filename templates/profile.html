@@ -155,9 +155,11 @@
              <div class="body-frame">
                       {{post.caption}}
              </div>
+             {% if post.post_image %}
              <div class="body-image">
                       <img src="{{post.post_image.url}}" alt="" class="bdimg"/> 
              </div>
+             {% endif %}
              <div class="bottom-frame">
                  <a href="/like?id={{post.id}}">
                       <button
