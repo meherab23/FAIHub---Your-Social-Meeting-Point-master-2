@@ -341,4 +341,38 @@ img {
     main div.container div.chat-window div.user-input {
         flex-shrink: 0;
     }
+
+    /* ================= PROFILE HEADER ================= */
+    /* The avatar image (200px) overflowed its floated container on
+       narrow screens and visually overlapped the "View About" button,
+       so taps landed on the image instead of the button underneath. */
+    .profile {
+        padding: 1rem 0 !important;
+    }
+    .profile-image {
+        float: none !important;
+        width: 100% !important;
+        height: auto !important;
+        display: flex !important;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    .avatar-xl img {
+        width: 110px !important;
+        height: 110px !important;
+    }
+    .profile-user-settings,
+    .profile-stats,
+    .profile-bio {
+        float: none !important;
+        width: 100% !important;
+        text-align: center;
+    }
+    .profile-user-name {
+        font-size: 1.4rem !important;
+    }
+    .profile-edit-btn {
+        position: relative;
+        z-index: 5;
+    }
 }
